@@ -24,10 +24,11 @@ namespace ConsoleApp2
 		}
 		public static DateTime ConverShamsiToMiladi(string time)
 		{
+			System.Globalization.PersianCalendar persianCalender = new System.Globalization.PersianCalendar();
 			int year = Convert.ToInt32(time.Substring(0, 4));
 			int month = Convert.ToInt32(time.Substring(5, 2));
 			int day = Convert.ToInt32(time.Substring(8, 2));
-			DateTime miladiDate = new DateTime(year, month, day);
+			DateTime miladiDate = new DateTime(year, month, day,persianCalender);
 
 
 			return miladiDate;
@@ -45,15 +46,17 @@ namespace ConsoleApp2
 			return hijriDate;
 		}
 
+		
+
 		public static DateTime ConverGhamariToMiladi(string time)
 		{
-
+			System.Globalization.HijriCalendar hijriCalendar = new System.Globalization.HijriCalendar();
 			int year = Convert.ToInt32(time.Substring(0, 4));
 			int month = Convert.ToInt32(time.Substring(5, 2));
 			int day = Convert.ToInt32(time.Substring(8, 2));
-			DateTime miladiDate = new DateTime(year, month, day);
-			return miladiDate;
+			DateTime miladiDate = new DateTime(year, month, day,hijriCalendar);
 
+			return miladiDate;
 		}
 
 		public static Date ConverMiladiToHebrew(System.DateTime time)
@@ -65,6 +68,17 @@ namespace ConsoleApp2
 			int day = hebrewCalendar.GetDayOfMonth(time);
 			Date hebrewDate = new Date(year: year, month: month, day: day);
 			return hebrewDate;
+		}
+
+		public static DateTime ConverHebrewToMiladi(string time)
+		{
+			System.Globalization.HebrewCalendar hebrewCalendar = new System.Globalization.HebrewCalendar();
+			int year = Convert.ToInt32(time.Substring(0, 4));
+			int month = Convert.ToInt32(time.Substring(5, 2));
+			int day = Convert.ToInt32(time.Substring(8, 2));
+			DateTime miladiDate = new DateTime(year, month, day, hebrewCalendar);
+
+			return miladiDate;
 		}
 
 
